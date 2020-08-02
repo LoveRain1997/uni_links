@@ -11,6 +11,7 @@ import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
+import android.text.TextUtils;
 
 public class UniLinksPlugin
         implements FlutterPlugin,
@@ -33,7 +34,7 @@ public class UniLinksPlugin
         String action = intent.getAction();
         String dataString = intent.getDataString();
 
-        if (Intent.ACTION_VIEW.equals(action)) {
+        if (!TextUtils.isEmpty(dataString)) {
             if (initialIntent) {
                 initialLink = dataString;
                 initialIntent = false;
